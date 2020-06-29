@@ -1,0 +1,33 @@
+TP-Link AC600 Archer T2U Nano - Ubuntu 20.04 - Info and drivers
+
+If you have "TP-Link AC600 Archer T2U Nano" then you can install its driver by following simple steps by steps procedure:-
+
+Step 1) Boot Ubuntu System and Login
+Step 2) run "sudo tail -n 0 -f /var/log/syslog"
+Step 3) Plug in TP-Link AC600 Archer T2U Nano USB into USB port.
+Step 4) Read log and check Device ID it should be similar like output 
+
+AbbA@AbbA-Desktop:~$ sudo tail -n 0 -f /var/log/syslog
+Jun 29 22:36:23 AbbA@AbbA-Desktop: [ 1229.701268] usb 1-4: new high-speed USB device number 6 using xhci_hcd
+Jun 29 22:36:23 AbbA@AbbA-Desktop: [ 1229.875739] usb 1-4: New USB device found, idVendor=2357, idProduct=011e, bcdDevice= 2.00
+Jun 29 22:36:23 AbbA@AbbA-Desktop: [ 1229.875743] usb 1-4: New USB device strings: Mfr=1, Product=2, SerialNumber=3
+Jun 29 22:36:23 AbbA@AbbA-Desktop: [ 1229.875745] usb 1-4: Product: 802.11ac WLAN Adapter 
+Jun 29 22:36:23 AbbA@AbbA-Desktop: [ 1229.875747] usb 1-4: Manufacturer: Realtek 
+Jun 29 22:36:23 AbbA@AbbA-Desktop: [ 1229.875749] usb 1-4: SerialNumber: 00e04c000001
+
+So here following details we can read like :-
+
+Manufacturer: Realtek
+New USB device found, idVendor=2357, idProduct=011e, bcdDevice= 2.00
+
+Step 5) Now press Ctrl + z 
+Step 6) Now check or install prerequisite packages run "sudo apt-get install dkms git build-essential bc libelf-dev linux-headers-`uname -r` aircrack-ng"
+Step 7) Switch into login user Home Directory
+Step 8) Now get driver files, run "git clone -b v5.6.4.2 https://github.com/aircrack-ng/rtl8812au.git"
+Step 9) Now get into Drivers files directory run "cd rtl*"
+Step 10) To install driver run "sudo ./dkms-install.sh"
+Step 11) Once it complete reboot system and after login it will show you at top right corner Wi-Fi icon.
+
+P.S. In case if you want to remove driver run "sudo ./dkms-remove.sh"
+
+Reference :- https://github.com/aircrack-ng/rtl8812au
